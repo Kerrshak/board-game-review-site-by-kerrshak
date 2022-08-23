@@ -12,7 +12,7 @@ const SortingOptions = () => {
 
     const categoryElements = categoryList.map(({slug}) => {
         const categoryStr = slug[0].toUpperCase() + slug.slice(1).replace(/-/g, " ")
-        const endpoint = `http://localhost:3000/reviews/category/${slug}`
+        const endpoint = `/reviews/category/${slug}`
 
         return <a className='category-links' href={endpoint} key={slug}>{categoryStr}</a>
     })
