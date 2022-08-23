@@ -4,6 +4,7 @@ import {BrowserRouter, Link, Route, Routes} from "react-router-dom"
 import { useState } from 'react';
 import { UserContext } from './contexts/User';
 import Reviews from './components/Reviews';
+import SingleReview from './components/SingleReview';
 
 function App() {
   const [currentUser, setCurrentUser] = useState("tickle122")
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/reviews" element={<Reviews />}/>
             <Route path="/reviews/category/:category" element={<Reviews />}/>
+            <Route path="/reviews/:reviewID" element={<SingleReview />}/>
           </Routes>
         </UserContext.Provider>
 

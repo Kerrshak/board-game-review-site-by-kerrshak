@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { getAPI } from '../API'
 
-const SortingOptions = ({category = ""}) => {
+const SortingOptions = () => {
     const [categoryList, setCategoryList] = useState([])
-    console.log("this is the category", category)
     
     useEffect(() => {
         getAPI('categories').then(({categories})=> {
@@ -11,25 +10,18 @@ const SortingOptions = ({category = ""}) => {
         }) 
     }, [])
 
-    const handleChange = (event) => {
-        window.location.assign(`http://localhost:3000/reviews/${event.target.value}`)
-    }
-
     const categoryElements = categoryList.map(({slug}) => {
         const categoryStr = slug[0].toUpperCase() + slug.slice(1).replace(/-/g, " ")
+        const endpoint = `/reviews/category/${slug}`
 
-        return <option key={slug} value={`category/${slug}`} >{categoryStr}</option>
+        return <a className='category-links' href={endpoint} key={slug}>{categoryStr}</a>
     })
-
-    const defaultValue = (category === "") ? "" : `category/${category}`
 
     return (
         <div>
-            <label htmlFor="category">Category: </label>
-                <select onChange={handleChange} name="category" value={defaultValue}>
-                    <option key="null" value="">All categories</option>
-                    {categoryElements}
-                </select>
+            <nav id='category-element'>
+                {categoryElements}
+            </nav>
         </div>
     )
 }

@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ListOfReviews from './ListOfReviews'
 import SortingOptions from './SortingOptions'
@@ -8,7 +7,7 @@ function Reviews() {
 
     return (
         <div>
-            <SortingOptions  category={category} />
+            <SortingOptions  />
             <ListOfReviews category={category} />
         </div>
     )

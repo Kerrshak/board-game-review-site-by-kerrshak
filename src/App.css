@@ -18,6 +18,18 @@
 }
 
 .review-body {
-  width: 180vh;
+  width: 95%;
   text-align: justify;
+}
+
+#category-element {
+  margin-top: 20px;
+}
+
+.category-links {
+  padding: 5px;
+  border: solid black 1px;
+  border-radius: 5%;
+  margin: 10px;
+  background-color: aquamarine;
 }
