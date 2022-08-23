@@ -10,7 +10,7 @@ function ListOfReviews({category=""}) {
         .then(({reviews}) => {
             setReviewList(reviews)
         })
-    }, [])
+    }, [category])
 
     const reviewElements = reviewList.map((review) => {
         const endpoint = `/reviews/${review.review_id}`
