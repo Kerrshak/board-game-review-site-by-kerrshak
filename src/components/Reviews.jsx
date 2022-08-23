@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import ListOfReviews from './ListOfReviews'
 import SortingOptions from './SortingOptions'
 
-const Reviews = () => {
-
-    const [categoryFilter, setCategoryFilter] = useState([])
+function Reviews() {
+    const {category} = useParams()
 
     return (
         <div>
-            <SortingOptions setCategoryFilter={setCategoryFilter} />
-            <ListOfReviews categoryFilter={categoryFilter} setCategoryFilter={setCategoryFilter} />
+            <SortingOptions  category={category} />
+            <ListOfReviews category={category} />
         </div>
     )
 }
