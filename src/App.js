@@ -18,13 +18,14 @@ function App() {
       
         <nav>
           <div id='nav-buttons'>
-            <Link to="/">Reviews</Link>
+            <Link to="/reviews">Reviews</Link>
           </div>
         </nav>
 
         <UserContext.Provider value={{currentUser, setCurrentUser}}>
           <Routes>
-            <Route path="/" element={<Reviews />}/>
+            <Route path="/reviews" element={<Reviews />}/>
+            <Route path="/reviews/category/:category" element={<Reviews />}/>
           </Routes>
         </UserContext.Provider>
 
