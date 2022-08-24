@@ -1,34 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getAPI } from '../API'
+import { getAPI, patchAPI } from '../API'
 
 const SingleReview = () => {
     const {reviewID} = useParams()
-    const [review, setReview] = useState({})
-    
-    console.log('single review component is running')
+    const [renderedReview, setRenderedReview] = useState({})
 
     useEffect(() => {
-        console.log("useEffect is running")
         getAPI(`reviews/${reviewID}`)
         .then(({review}) => {
             review.created_at = review.created_at.replace("T", " ").slice(0, 16)
-            setReview(review)
+            setRenderedReview(review)
         })
-    }, [])
+    }, [setRenderedReview])
 
+    const handleClick = (event) => {
+        const voteValue = Number(event.target.value)
 
+        patchAPI(reviewID, voteValue)
+        .catch(() => {
+            const errReview = {...renderedReview, votes: "Error, could not update votes"}
+            setRenderedReview(errReview)
+        })
+
+        const newVotes = renderedReview.votes + voteValue
+        const updatedReview = {...renderedReview, votes: newVotes}
+
+        setRenderedReview(updatedReview)
+    }
   
     return (
         <div>
-            <h2>{review.title}</h2>
-            <img className='review-img' src="https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg" alt={review.title} />
-            <p>Category: {review.category}</p>
-            <p className='review-body'>{review.review_body}</p>
-            { <p>Written by: {review.owner} on {review.created_at} &nbsp;&nbsp;&nbsp; Game by: {review.designer}</p> }
-            <p>Votes: {review.votes} &nbsp;&nbsp;&nbsp; Comments: {review.comment_count}</p>
+            <h2>{renderedReview.title}</h2>
+            <img className='review-img' src="https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg" alt={renderedReview.title} />
+            <p>Category: {renderedReview.category}</p>
+            <p className='review-body'>{renderedReview.review_body}</p>
+            <p>Written by: {renderedReview.owner} on {renderedReview.created_at} &nbsp;&nbsp;&nbsp; Game by: {renderedReview.designer}</p>
+            <p>Votes: {renderedReview.votes} <button value={1} onClick={handleClick}>Upvote</button> <button value={-1} onClick={handleClick}>Downvote</button></p>
+            <p>Comments: </p>
         </div>
-  )
+    )
 }
 
 export default SingleReview
