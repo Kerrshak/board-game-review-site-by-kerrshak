@@ -4,7 +4,7 @@ import { Link, useSearchParams } from "react-router-dom"
 
 function ListOfReviews({category=""}) {
     const [reviewList, setReviewList] = useState([])
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
 
     useEffect(() => {
         let sortBy = searchParams.get("sort_by")
