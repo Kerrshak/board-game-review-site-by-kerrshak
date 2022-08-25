@@ -1,12 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import { getAPI } from '../API'
-import { Link } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 
 function ListOfReviews({category=""}) {
     const [reviewList, setReviewList] = useState([])
+    const [searchParams] = useSearchParams()
 
     useEffect(() => {
-        getAPI(`reviews/?category=${category}`)
+        let sortBy = searchParams.get("sort_by")
+        let order = searchParams.get("order")
+        let getCategory = ""
+
+        if (category !== "") {
+            getCategory = `category=${category}`
+        }
+
+        if (sortBy === null) {
+            sortBy = ""
+        } else {
+            sortBy = `sort_by=${sortBy}`
+        }
+
+        if (order === null) {
+            order = ""
+        } else {
+            order = `order=${order}`
+        }
+
+        getAPI(`reviews/?${category}&${sortBy}&${order}`)
         .then(({reviews}) => {
             setReviewList(reviews)
         })
