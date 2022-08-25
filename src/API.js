@@ -19,3 +19,13 @@ export const patchAPI = (reviewID, vote) => {
             throw new Error()
         })
 }
+
+export const postAPI = (reviewID, comment, username) => {
+    const endpoint = `https://board-game-reviews-by-kerrshak.herokuapp.com/api/reviews/${reviewID}/comments`
+    const commentObj = {username: username, body: comment}
+
+    return axios.post(endpoint, commentObj)
+        .catch(() => {
+            throw new Error()
+        })
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAPI } from '../API'
+import PostComment from './PostComment'
 
 const Comments = ({reviewID}) => {
     const [renderedComments, setRenderedComments] = useState([])
@@ -9,8 +10,7 @@ const Comments = ({reviewID}) => {
         .then(({comments}) => {
             const commentsArr = comments.map((comment) => {
 
-
-                return <li className='comment-items'>
+                return <li key={comment.comment_id} className='comment-items'>
                     <p>{comment.body}</p>
                     <p>Written by: {comment.author} at: {comment.created_at.replace("T", " ").slice(0, 16)}</p>
                     <p>Votes: {comment.votes}</p>
@@ -28,6 +28,7 @@ const Comments = ({reviewID}) => {
             <ul>
                 {renderedComments}
             </ul>
+            <PostComment renderedComments={renderedComments} setRenderedComments={setRenderedComments} reviewID={reviewID}/>
         </div>
     )
 }

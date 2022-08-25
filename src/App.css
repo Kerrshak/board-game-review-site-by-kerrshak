@@ -41,3 +41,7 @@ ul {
 .comment-items {
   text-align: left;
 }
+
+#comment-box {
+  width: 95%;
+}
