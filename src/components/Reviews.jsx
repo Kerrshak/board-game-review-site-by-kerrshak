@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import ListOfReviews from './ListOfReviews'
 import SortingOptions from './SortingOptions'
 
@@ -7,7 +7,7 @@ function Reviews() {
 
     return (
         <div>
-            <SortingOptions  />
+            <SortingOptions  category={category} />
             <ListOfReviews category={category} />
         </div>
     )
