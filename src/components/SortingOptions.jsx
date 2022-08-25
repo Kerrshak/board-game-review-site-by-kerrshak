@@ -5,7 +5,7 @@ import { getAPI } from '../API'
 const SortingOptions = ({category = ""}) => {
     const [categoryList, setCategoryList] = useState([])
     const [sortingType, setSortingType] = useState("created_at")
-    const [sortingOrder, setSortingOrder] = useState("asc")
+    const [sortingOrder, setSortingOrder] = useState("desc")
     
     useEffect(() => {
         getAPI('categories').then(({categories})=> {

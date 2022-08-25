@@ -7,18 +7,27 @@ function ListOfReviews({category=""}) {
     const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect(() => {
-        const sortBy = searchParams.get("sort_by")
+        let sortBy = searchParams.get("sort_by")
         let order = searchParams.get("order")
+        let getCategory = ""
 
-        if (sortBy === "comment_count"){
-            if (order === "asc") {
-                order = "desc"
-            } else {
-                order = "asc"
-            }
+        if (category !== "") {
+            getCategory = `category=${category}`
         }
 
-        getAPI(`reviews/?category=${category}&sort_by=${sortBy}&order=${order}`)
+        if (sortBy === null) {
+            sortBy = ""
+        } else {
+            sortBy = `sort_by=${sortBy}`
+        }
+
+        if (order === null) {
+            order = ""
+        } else {
+            order = `order=${order}`
+        }
+
+        getAPI(`reviews/?${category}&${sortBy}&${order}`)
         .then(({reviews}) => {
             setReviewList(reviews)
         })
