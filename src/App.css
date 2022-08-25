@@ -33,3 +33,11 @@
   margin: 10px;
   background-color: aquamarine;
 }
+
+ul {
+  list-style: none;
+}
+
+.comment-items {
+  text-align: left;
+}

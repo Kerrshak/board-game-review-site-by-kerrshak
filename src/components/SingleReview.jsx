@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getAPI, patchAPI } from '../API'
+import Comments from './Comments'
 
 const SingleReview = () => {
     const {reviewID} = useParams()
@@ -38,6 +39,7 @@ const SingleReview = () => {
             <p>Written by: {renderedReview.owner} on {renderedReview.created_at} &nbsp;&nbsp;&nbsp; Game by: {renderedReview.designer}</p>
             <p>Votes: {renderedReview.votes} <button value={1} onClick={handleClick}>Upvote</button> <button value={-1} onClick={handleClick}>Downvote</button></p>
             <p>Comments: </p>
+            <Comments reviewID={reviewID}/>
         </div>
     )
 }
