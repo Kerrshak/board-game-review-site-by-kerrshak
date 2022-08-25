@@ -8,7 +8,15 @@ function ListOfReviews({category=""}) {
 
     useEffect(() => {
         const sortBy = searchParams.get("sort_by")
-        const order = searchParams.get("order")
+        let order = searchParams.get("order")
+
+        if (sortBy === "comment_count"){
+            if (order === "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        }
 
         getAPI(`reviews/?category=${category}&sort_by=${sortBy}&order=${order}`)
         .then(({reviews}) => {
