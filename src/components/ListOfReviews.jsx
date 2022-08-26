@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAPI } from '../API'
 import { Link, useSearchParams } from "react-router-dom"
+import InvalidEndpoint from './InvalidEndpoint'
 
 function ListOfReviews({category=""}) {
     const [reviewList, setReviewList] = useState([])
@@ -27,9 +28,16 @@ function ListOfReviews({category=""}) {
             order = `order=${order}`
         }
 
-        getAPI(`reviews/?${category}&${sortBy}&${order}`)
-        .then(({reviews}) => {
+        
+        getAPI(`reviews/?${getCategory}&${sortBy}&${order}`)
+        .then(({reviews = []}) => {
             setReviewList(reviews)
+        })
+        .catch(() => {
+            const errorMessage = document.getElementById(`hidden-error`)
+
+            errorMessage.style.display = "block"
+            setReviewList([])
         })
     }, [category])
 
@@ -50,6 +58,9 @@ function ListOfReviews({category=""}) {
             <ul id='review-list'>
                 {reviewElements}
             </ul>
+            <div id="hidden-error" style={{display : "none"}}>
+                <InvalidEndpoint />
+            </div>
         </div>
     )
 }

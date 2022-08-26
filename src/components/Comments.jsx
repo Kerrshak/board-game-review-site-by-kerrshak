@@ -29,7 +29,7 @@ const Comments = ({reviewID}) => {
             })
     }
 
-    const renderCommentsArr = (comments) => {
+    const renderCommentsArr = (comments = []) => {
         const commentsArr = comments.map((comment) => {
             if(currentUser === comment.author) {
                 return <li key={comment.comment_id} id={`comment-${comment.comment_id}`} className='comment-items'>
@@ -54,14 +54,29 @@ const Comments = ({reviewID}) => {
         .then(({comments}) => {
             renderCommentsArr(comments)
         })
+
+        if(currentUser === "") {
+            const postCommentElement = document.getElementById("post-comment-element")
+            const loginCommentElement = document.getElementById("login-comment-element")
+    
+            postCommentElement.style.display = "none"
+            loginCommentElement.style.display = "block"
+        }
     }, [setRenderedComments])
+
 
     return (
         <div>
             <ul>
                 {renderedComments}
             </ul>
-            <PostComment renderedComments={renderedComments} setRenderedComments={setRenderedComments} reviewID={reviewID}/>
+            <div id='post-comment-element'>
+                <PostComment renderedComments={renderedComments} setRenderedComments={setRenderedComments} reviewID={reviewID}/>
+            </div>
+            <div id="login-comment-element" style={{display : "none"}}>
+                <p>You have to be logged in to post comments</p>
+                <a href="/users">User login</a>
+            </div>
         </div>
     )
 }
