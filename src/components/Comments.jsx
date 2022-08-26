@@ -62,7 +62,7 @@ const Comments = ({reviewID}) => {
             postCommentElement.style.display = "none"
             loginCommentElement.style.display = "block"
         }
-    }, [setRenderedComments])
+    }, [setRenderedComments, currentUser, renderCommentsArr])
 
 
     return (

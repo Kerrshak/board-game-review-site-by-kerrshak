@@ -11,10 +11,8 @@ const UserLogin = () => {
     }
 
     useEffect(() => {
-        console.log("useeffect running")
         getAPI('users').then(({users})=> {
             const usersArr = users.map((user) => {
-                console.log(user)
                 return <li>
                     {(user.username === currentUser) 
                         ? <p>{`Logged in as ${user.username}`}</p> 
@@ -25,7 +23,7 @@ const UserLogin = () => {
 
             setUserList(usersArr)
         }) 
-    }, [currentUser])
+    }, [currentUser, onClick])
 
     return (
         <ul>

@@ -38,7 +38,6 @@ export const deleteAPI = (commentID) => {
 
     return axios.delete(endpoint)
         .catch((err) => {
-            console.log("caught", err)
             throw new Error()
         })
 }

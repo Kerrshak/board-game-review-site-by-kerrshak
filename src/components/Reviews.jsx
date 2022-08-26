@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import ListOfReviews from './ListOfReviews'
 import SortingOptions from './SortingOptions'
 

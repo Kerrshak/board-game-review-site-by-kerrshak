@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate } from 'react-router-dom'
 import { getAPI } from '../API'
 
 const SortingOptions = ({category = ""}) => {

@@ -27,7 +27,6 @@ const PostComment = ({renderedComments, setRenderedComments, reviewID}) => {
             })
             .catch((err) => {
                 const failureElement = document.getElementById(`failure-${event.target.value}`)
-                console.log("error occured", err)
 
                 failureElement.style.display = "block"
                 invisElement.style.display = "none"

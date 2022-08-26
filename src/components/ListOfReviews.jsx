@@ -39,7 +39,7 @@ function ListOfReviews({category=""}) {
             errorMessage.style.display = "block"
             setReviewList([])
         })
-    }, [category])
+    }, [category, searchParams])
 
     const reviewElements = reviewList.map((review) => {
         const endpoint = `/reviews/${review.review_id}`

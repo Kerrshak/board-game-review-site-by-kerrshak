@@ -21,7 +21,7 @@ const SingleReview = () => {
             errorMessage.style.display = "block"
             reviewElement.style.display = "none"
         })
-    }, [setRenderedReview])
+    }, [setRenderedReview, reviewID])
 
     const handleClick = (event) => {
         const voteValue = Number(event.target.value)
