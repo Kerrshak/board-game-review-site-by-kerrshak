@@ -45,3 +45,11 @@ ul {
 #comment-box {
   width: 95%;
 }
+
+.deleting {
+  display: none;
+}
+
+.failure {
+  display: none;
+}
