@@ -3,6 +3,9 @@ import axios from "axios"
 export const getAPI = (endpoint) => {
     return fetch(`https://board-game-reviews-by-kerrshak.herokuapp.com/api/${endpoint}`)
         .then((res) => {
+            if(res.status === 404){
+                throw new Error()
+            }
             return res.json()
         })
 }
@@ -34,7 +37,8 @@ export const deleteAPI = (commentID) => {
     const endpoint = `https://board-game-reviews-by-kerrshak.herokuapp.com/api/comments/${commentID}`
 
     return axios.delete(endpoint)
-        .catch(() => {
+        .catch((err) => {
+            console.log("caught", err)
             throw new Error()
         })
 }
