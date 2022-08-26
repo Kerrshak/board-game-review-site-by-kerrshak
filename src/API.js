@@ -29,3 +29,12 @@ export const postAPI = (reviewID, comment, username) => {
             throw new Error()
         })
 }
+
+export const deleteAPI = (commentID) => {
+    const endpoint = `https://board-game-reviews-by-kerrshak.herokuapp.com/api/comments/${commentID}`
+
+    return axios.delete(endpoint)
+        .catch(() => {
+            throw new Error()
+        })
+}
