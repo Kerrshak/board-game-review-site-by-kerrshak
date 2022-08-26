@@ -1,5 +1,7 @@
 # Link to hosted page
 
+https://bejewelled-flan-d4c553.netlify.app/
+
 # How to
 
 This app hosts a board game review site. Users may view reviews and vote on reviews. If the user is logged in they can also post comments or delete their previous comments. Their are also options to filter reviews by category and sort by votes, age, and comments.
