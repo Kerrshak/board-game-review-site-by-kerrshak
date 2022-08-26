@@ -6,11 +6,11 @@ const UserLogin = () => {
     const [userList, setUserList] = useState([])
     const {currentUser, setCurrentUser} = useContext(UserContext)
 
-    const onClick = (event) => {
-        setCurrentUser(event.target.value)
-    }
-
     useEffect(() => {
+        const onClick = (event) => {
+            setCurrentUser(event.target.value)
+        }
+
         getAPI('users').then(({users})=> {
             const usersArr = users.map((user) => {
                 return <li>
@@ -23,7 +23,7 @@ const UserLogin = () => {
 
             setUserList(usersArr)
         }) 
-    }, [currentUser, onClick])
+    }, [currentUser, setCurrentUser])
 
     return (
         <ul>

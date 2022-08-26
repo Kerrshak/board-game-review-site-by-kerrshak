@@ -29,7 +29,8 @@ const Comments = ({reviewID}) => {
             })
     }
 
-    const renderCommentsArr = (comments = []) => {
+    useEffect(() => {
+            const renderCommentsArr = (comments = []) => {
         const commentsArr = comments.map((comment) => {
             if(currentUser === comment.author) {
                 return <li key={comment.comment_id} id={`comment-${comment.comment_id}`} className='comment-items'>
@@ -49,7 +50,6 @@ const Comments = ({reviewID}) => {
         setRenderedComments(commentsArr)
     }
 
-    useEffect(() => {
         getAPI(`reviews/${reviewID}/comments`)
         .then(({comments}) => {
             renderCommentsArr(comments)
@@ -62,7 +62,7 @@ const Comments = ({reviewID}) => {
             postCommentElement.style.display = "none"
             loginCommentElement.style.display = "block"
         }
-    }, [setRenderedComments, currentUser, renderCommentsArr])
+    }, [setRenderedComments, currentUser, reviewID])
 
 
     return (
