@@ -29,7 +29,7 @@ const Comments = ({reviewID}) => {
             })
     }
 
-    const renderCommentsArr = (comments) => {
+    const renderCommentsArr = (comments = []) => {
         const commentsArr = comments.map((comment) => {
             if(currentUser === comment.author) {
                 return <li key={comment.comment_id} id={`comment-${comment.comment_id}`} className='comment-items'>
@@ -54,7 +54,7 @@ const Comments = ({reviewID}) => {
         .then(({comments}) => {
             renderCommentsArr(comments)
         })
-        
+
         if(currentUser === "") {
             const postCommentElement = document.getElementById("post-comment-element")
             const loginCommentElement = document.getElementById("login-comment-element")
