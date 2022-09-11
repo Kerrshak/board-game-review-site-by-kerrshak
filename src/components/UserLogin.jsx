@@ -15,8 +15,8 @@ const UserLogin = () => {
             const usersArr = users.map((user) => {
                 return <li>
                     {(user.username === currentUser) 
-                        ? <p>{`Logged in as ${user.username}`}</p> 
-                        : <div><p>{user.username}</p><button onClick={onClick} value={user.username}>Log in</button></div>}
+                        ? <p className='users'>{`Logged in as ${user.username}`}</p> 
+                        : <div><p className='users'>{user.username}</p><button className='login-button' onClick={onClick} value={user.username}>Log in</button></div>}
                     <img src={user.avatar_url} alt={user.username} />
                 </li>
             })

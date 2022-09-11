@@ -11,6 +11,8 @@ import InvalidEndpoint from './components/InvalidEndpoint';
 function App() {
   const [currentUser, setCurrentUser] = useState("")
 
+  document.title = "Boardgame reviews"
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -20,9 +22,9 @@ function App() {
         </header>
       
         <nav>
-          <div id='nav-buttons'>
-            <Link to="/users">User login</Link>
-            <Link to="/reviews">Reviews</Link>
+          <div id='nav-bar'>
+            <Link to="/users" className='nav-buttons'>User login</Link>
+            <Link to="/reviews" className='nav-buttons'>Reviews</Link>
           </div>
         </nav>
 
@@ -37,6 +39,8 @@ function App() {
             <Route path="/users/:invalid" element={<InvalidEndpoint />} />
           </Routes>
         </UserContext.Provider>
+
+        <p id='bottom-text'>This is a website made by Jack Kerr. For enquiries please email jack723@hotmail.co.uk</p>
 
       </div>
     </BrowserRouter>

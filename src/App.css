@@ -11,6 +11,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-bottom: 15px;
 }
 
 .review-img {
@@ -19,6 +20,7 @@
 
 .review-body {
   width: 95%;
+  margin-left: 2.5%;
   text-align: justify;
 }
 
@@ -26,16 +28,9 @@
   margin-top: 20px;
 }
 
-.category-links {
-  padding: 5px;
-  border: solid black 1px;
-  border-radius: 5%;
-  margin: 10px;
-  background-color: aquamarine;
-}
-
 ul {
   list-style: none;
+  padding: 0;
 }
 
 .comment-items {
@@ -52,4 +47,52 @@ ul {
 
 .failure {
   display: none;
+}
+
+.nav-buttons {
+  padding: 5px;
+  border: solid black 1px;
+  border-radius: 5%;
+  margin: 10px;
+  background-color: cornflowerblue;
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.category-links {
+  padding: 5px;
+  border: solid black 1px;
+  border-radius: 5%;
+  margin: 10px;
+  background-color: indigo;
+  color: aliceblue;
+  text-decoration: none;
+}
+
+#nav-bar {
+  margin: 5px;
+}
+
+.users {
+  font-size: 20px;
+}
+
+.login-button {
+  font-size: 18px;
+}
+
+.sorting-dropdowns {
+  font-size: 17px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+#bottom-text {
+  border-top: #282c34 dotted;
+  padding-top: 5px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  margin: 0;
 }

@@ -43,18 +43,18 @@ const SortingOptions = ({category = ""}) => {
                 {categoryElements}
             </nav><br />
             <form onSubmit={handleSubmit}>
-                <label htmlFor="sort_by">Sort by:</label>
-                <select onChange={handleSorting} name="sort_by" id="sort_by">
+                <label className='sorting-dropdowns' htmlFor="sort_by">Sort by:</label>
+                <select className='sorting-dropdowns' onChange={handleSorting} name="sort_by" id="sort_by">
                     <option value="created_at">Date</option>
                     <option value="comment_count">Comments</option>
                     <option value="votes">Votes</option>
                 </select>
                 <label htmlFor="order"></label>
-                <select onChange={handleOrder} name="order" id="order">
+                <select className='sorting-dropdowns' onChange={handleOrder} name="order" id="order">
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
                 </select>
-                <button type='submit'>Submit</button>
+                <button className='sorting-dropdowns' type='submit'>Submit</button>
             </form>
         </div>
     )
